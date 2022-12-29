@@ -1,0 +1,36 @@
+//Binary Search
+
+#include<stdio.h>
+
+int binary_search(int arr[], int x ,int low, int high)
+{
+if(high>=low)
+{
+int mid;
+mid = low + (high-low)/2;
+
+if(arr[mid]==x)
+return mid;
+
+if(arr[mid]>x)
+return binary_search(arr,x, low, mid-1);
+
+else
+return binary_search(arr,x, mid+1, high);
+}
+return -1;
+}
+
+int main(void)
+{
+int arr[]={3,6,9,12,55};
+int n = sizeof(arr)/sizeof(arr[0]);
+int x=55;
+int result=binary_search(arr,x,0,n-1);
+
+if(result==-1)
+printf("Not found");
+
+else
+printf("Element is found at index %d\n" , result);
+}
